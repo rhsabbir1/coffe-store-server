@@ -28,6 +28,11 @@ async function run() {
 
     const coffeCollection = client.db("coffeBD").collection("coffe");
 
+    app.get('/coffe', async(req, res)=>{
+      const curcor = coffeCollection.find()
+      const result = await curcor.toArray()
+      res.send(result)
+    })
 
     app.post('/coffe', async(req , res)=>{
       const newCoffe = req.body;
